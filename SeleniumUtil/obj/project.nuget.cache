@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "RDSGakWqCj3gogBaGUgSqmzel9+tBZendBoCHNZ7jn7lqrAsXlbMl/X2Nk76m3S628+WDPMRXS8TUIB4tw90Aw==",
+  "success": true,
+  "projectFilePath": "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\atata.cli\\1.3.0\\atata.cli.1.3.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\atata.webdriversetup\\1.2.1\\atata.webdriversetup.1.2.1.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\selenium.support\\4.1.0\\selenium.support.4.1.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\selenium.webdriverbackedselenium\\4.1.0\\selenium.webdriverbackedselenium.4.1.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.security.accesscontrol\\6.0.0\\system.security.accesscontrol.6.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

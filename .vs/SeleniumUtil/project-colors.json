@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "bc145ffd-253e-4d41-a61d-3dbcb39a2d94": {
+      "ProjectGuid": "bc145ffd-253e-4d41-a61d-3dbcb39a2d94",
+      "DisplayName": "SeleniumUtil",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
