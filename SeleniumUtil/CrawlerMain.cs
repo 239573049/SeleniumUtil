@@ -26,6 +26,12 @@ namespace SeleniumUtil
         public FirefoxOptions? _firefoxOptions = null;
         public FirefoxDriver? _firefoxSelenium = null;
         private BrowserEnum? _browserEnum = null;
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="browser">选择浏览器</param>
+        /// <param name="hideCommandPromptWindow">是否隐藏命令窗口</param>
+        /// <exception cref="NullReferenceException"></exception>
         public CrawlerMain(BrowserEnum browser, bool hideCommandPromptWindow = false)
         {
             _browserEnum = browser;
