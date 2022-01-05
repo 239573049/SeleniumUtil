@@ -4,7 +4,9 @@
 Selenium Simplified tool kit，Contains some basic operations for the three major browsers
 ####  Install Package
 in tool=》NuGet Package Manager =》package manager console
+```
 Install-Package SeleniumUtil -Version 1.1.0
+```
 #### use SeleniumUtil call on baidu
 
 ```
