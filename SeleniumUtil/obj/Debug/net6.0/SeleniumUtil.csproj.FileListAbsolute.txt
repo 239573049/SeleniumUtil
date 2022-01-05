@@ -2,7 +2,6 @@ D:\source\SeleniumUtil\SeleniumUtil\bin\Debug\net6.0\SeleniumUtil.deps.json
 D:\source\SeleniumUtil\SeleniumUtil\bin\Debug\net6.0\SeleniumUtil.dll
 D:\source\SeleniumUtil\SeleniumUtil\bin\Debug\net6.0\ref\SeleniumUtil.dll
 D:\source\SeleniumUtil\SeleniumUtil\bin\Debug\net6.0\SeleniumUtil.pdb
-D:\source\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.csproj.AssemblyReference.cache
 D:\source\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.GeneratedMSBuildEditorConfig.editorconfig
 D:\source\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.AssemblyInfoInputs.cache
 D:\source\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.AssemblyInfo.cs
@@ -21,3 +20,4 @@ D:\project\.net\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.csproj.C
 D:\project\.net\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.dll
 D:\project\.net\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\ref\SeleniumUtil.dll
 D:\project\.net\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.pdb
+D:\source\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.csproj.AssemblyReference.cache

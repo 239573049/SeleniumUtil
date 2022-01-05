@@ -19,9 +19,14 @@
         <dependency id="System.Security.Principal.Windows" version="5.0.0" exclude="Build,Analyzers" />
       </group>
     </dependencies>
+    <contentFiles>
+      <files include="any/net6.0/logo.jpg" buildAction="Content" />
+    </contentFiles>
   </metadata>
   <files>
-    <file src="D:\project\.net\SeleniumUtil\SeleniumUtil\bin\Debug\net6.0\SeleniumUtil.dll" target="lib\net6.0\SeleniumUtil.dll" />
-    <file src="C:\Users\Administrator\Pictures\logo.jpg" target="\logo.jpg" />
+    <file src="D:\source\SeleniumUtil\SeleniumUtil\bin\Debug\net6.0\SeleniumUtil.dll" target="lib\net6.0\SeleniumUtil.dll" />
+    <file src="D:\source\SeleniumUtil\SeleniumUtil\logo.jpg" target="content\logo.jpg" />
+    <file src="D:\source\SeleniumUtil\SeleniumUtil\logo.jpg" target="contentFiles\any\net6.0\logo.jpg" />
+    <file src="C:\Users\Administrator\Desktop\logo.jpg" target="\logo.jpg" />
   </files>
 </package>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\project\\.net\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj": {}
+    "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj": {}
   },
   "projects": {
-    "D:\\project\\.net\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj": {
+    "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj": {
       "version": "1.0.1",
       "restore": {
-        "projectUniqueName": "D:\\project\\.net\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
+        "projectUniqueName": "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
         "projectName": "SeleniumUtil",
-        "projectPath": "D:\\project\\.net\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
+        "projectPath": "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\project\\.net\\SeleniumUtil\\SeleniumUtil\\obj\\",
+        "outputPath": "D:\\source\\SeleniumUtil\\SeleniumUtil\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
