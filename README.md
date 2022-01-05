@@ -6,6 +6,8 @@ Selenium简化工具包，包含三个主流浏览器的一些基本操作
 在 工具=》NuGet包管理器=》程序包管理器控制台 
 Install-Package SeleniumUtil -Version 1.1.0
 #### 使用SeleniumUtil访问baidu
+
+```
 using SeleniumUtil;
 
 var data=new CrawlerMain(browser:BrowserEnum.Edge,isEnableVerboseLogging:true);
@@ -19,4 +21,5 @@ var content_left = data.FindElementsById("content_left");
 Console.WriteLine(content_left.Text);
 Console.ReadKey();
 
+```
 
