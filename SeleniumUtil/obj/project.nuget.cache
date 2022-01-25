@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "NhS9Wx3kWkqkeV5/4c0IejOWK2gJGm7UjzfnMsHizJv041sDsiia3HAmHKO++Yi78ftjRmHJnXuvxu3ZXON0Aw==",
+=======
+  "dgSpecHash": "h2ET/ApT30/HHTJtnsuqLUK7zNn5q0mPNetczeuvcDYSr3VgiML8lICGxOAyKHZq2w+nq95OhOaAxXmTx4J/8A==",
+>>>>>>> 53be06e34e423700a3d6361359860edb4e68fc45
   "success": true,
   "projectFilePath": "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
   "expectedPackageFiles": [

@@ -389,7 +389,11 @@
     "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
+<<<<<<< HEAD
     "version": "1.1.6",
+=======
+    "version": "1.1.0",
+>>>>>>> 53be06e34e423700a3d6361359860edb4e68fc45
     "restore": {
       "projectUniqueName": "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
       "projectName": "SeleniumUtil",

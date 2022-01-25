@@ -20,4 +20,7 @@ D:\project\.net\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.csproj.C
 D:\project\.net\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.dll
 D:\project\.net\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\ref\SeleniumUtil.dll
 D:\project\.net\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.pdb
+<<<<<<< HEAD
 D:\source\SeleniumUtil\SeleniumUtil\obj\Debug\net6.0\SeleniumUtil.csproj.AssemblyReference.cache
+=======
+>>>>>>> 53be06e34e423700a3d6361359860edb4e68fc45
