@@ -1,10 +1,10 @@
 ﻿using Atata.WebDriverSetup;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.DevTools;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Interactions;
+using SeleniumUtil.Entitys;
 using System.Collections.ObjectModel;
 
 namespace SeleniumUtil
@@ -70,8 +70,17 @@ namespace SeleniumUtil
         /// <param name="hideCommandPromptWindow">是否隐藏命令窗口</param>
         /// <param name="pageLoadStrategy">加载策略</param>
         /// <param name="isEnableVerboseLogging">是否启动日志详细(firefox不生效)</param>
+        /// <param name="isShowBrowser">是否显示浏览器</param>
+        /// <param name="isGpu">是否启用gpu加速</param>
+        /// <param name="size">浏览器显示大小</param>
         /// <exception cref="NullReferenceException"></exception>
-        public CrawlerMain(BrowserEnum browser, bool hideCommandPromptWindow = false, PageLoadStrategy pageLoadStrategy= PageLoadStrategy.Normal,bool isEnableVerboseLogging=false)
+        public CrawlerMain(BrowserEnum browser,
+            Entitys.Size? size =null,
+            bool hideCommandPromptWindow = false, 
+            PageLoadStrategy pageLoadStrategy= PageLoadStrategy.Normal,
+            bool isEnableVerboseLogging=false,
+            bool isGpu=false,
+            bool isShowBrowser=true)
         {
             _browserEnum = browser;
             switch (_browserEnum)
@@ -91,6 +100,19 @@ namespace SeleniumUtil
                     {
                         PageLoadStrategy = pageLoadStrategy
                     };
+                    if (!isShowBrowser)
+                    {
+                        _chromeOptions.AddArgument("--headless");//隐藏浏览器
+                    }
+                    else
+                    {
+                        if (size == null) size = new Entitys.Size(500, 1200);
+                        _chromeOptions.AddArgument($"--window-size={size.Width},{size.Height}");
+                    }
+                    if (!isGpu)
+                    {
+                        _chromeOptions.AddArgument("--disable-gpu");
+                    }
                     _chromeSelenium = new ChromeDriver(_chromeDriver, _chromeOptions);
                     break;
                 case BrowserEnum.Edge:
@@ -108,6 +130,19 @@ namespace SeleniumUtil
                     {
                         PageLoadStrategy = pageLoadStrategy
                     };
+                    if (!isShowBrowser)
+                    {
+                        _edgeOptions.AddArgument("--headless");//隐藏浏览器
+                    }
+                    else
+                    {
+                        if (size == null) size = new Entitys.Size(500, 1200);
+                        _edgeOptions.AddArgument($"--window-size={size.Width},{size.Height}");
+                    }
+                    if (!isGpu)
+                    {
+                        _edgeOptions.AddArgument("--disable-gpu");
+                    }
                     _edgeSelenium = new EdgeDriver(_edgeDriver, _edgeOptions);
                     break;
                 case BrowserEnum.Firefox:
@@ -120,13 +155,34 @@ namespace SeleniumUtil
                     {
                         PageLoadStrategy = pageLoadStrategy
                     };
+                    if (!isShowBrowser)
+                    {
+                        _firefoxOptions.AddArgument("--headless");//隐藏浏览器
+                    }
+                    else
+                    {
+                        if (size == null) size = new Entitys.Size(500, 1200);
+                        _firefoxOptions.AddArgument($"--window-size={size.Width},{size.Height}");
+                    }
+                    if (!isGpu)
+                    {
+                        _firefoxOptions.AddArgument("--disable-gpu");
+                    }
                     _firefoxSelenium = new FirefoxDriver(_firefoxDriver, _firefoxOptions);
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
-
+        /// <summary>
+        /// 默认创建Edge
+        /// </summary>
+        /// <exception cref="NullReferenceException"></exception>
+        public static CrawlerMain NewCrawlerMain(BrowserEnum browser=BrowserEnum.Edge
+            )
+        {
+            return new CrawlerMain(browser);
+        }
         /// <summary>
         /// 访问地址
         /// </summary>
@@ -905,39 +961,19 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
-
-        //public void RequestHandlerV96(EventHandler<OpenQA.Selenium.DevTools.V96.Fetch.RequestPausedEventArgs> requestPausedHandle)
-        //{卡顿问题无法解决 监听请求
-        //    IDevTools? tools = null;
-        //    switch (_browserEnum)
-        //    {
-        //        case BrowserEnum.Chrome:
-        //            tools=_chromeSelenium;
-        //            break;
-        //        case BrowserEnum.Edge:
-        //            tools = _edgeSelenium;
-        //            break;
-        //        case BrowserEnum.Firefox:
-        //            tools = _firefoxSelenium;
-        //            break;
-        //    }
-        //    var devToolsSession = tools!.GetDevToolsSession();
-        //    var fetch = devToolsSession.GetVersionSpecificDomains<OpenQA.Selenium.DevTools.V96.DevToolsSessionDomains>()
-        //        .Fetch;
-        //    var enableCommandSettings = new OpenQA.Selenium.DevTools.V96.Fetch.EnableCommandSettings();
-        //    var requestPattern = new OpenQA.Selenium.DevTools.V96.Fetch.RequestPattern();
-        //    requestPattern.RequestStage = OpenQA.Selenium.DevTools.V96.Fetch.RequestStage.Response;
-        //    requestPattern.ResourceType = OpenQA.Selenium.DevTools.V96.Network.ResourceType.Document;
-        //    enableCommandSettings.Patterns = new OpenQA.Selenium.DevTools.V96.Fetch.RequestPattern[] { requestPattern };
-        //    fetch.Enable(enableCommandSettings);
-        //    fetch.RequestPaused += requestPausedHandle;
-        //}
-
-    }
-    public enum BrowserEnum
-    {
-        Chrome,
-        Edge,
-        Firefox
+        /// <summary>
+        /// 获取标题
+        /// </summary>
+        /// <returns></returns>
+        public string GetTitle()
+        {
+            return _browserEnum switch
+            {
+                BrowserEnum.Chrome => _chromeSelenium!.Title,
+                BrowserEnum.Edge => _edgeSelenium!.Title,
+                BrowserEnum.Firefox => _firefoxSelenium!.Title,
+                _ => throw new NullReferenceException("不存在浏览器适配"),
+            };
+        }
     }
 }
