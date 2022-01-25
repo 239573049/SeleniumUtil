@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj": {
-      "version": "1.1.5",
+      "version": "1.1.6",
       "restore": {
         "projectUniqueName": "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
         "projectName": "SeleniumUtil",
