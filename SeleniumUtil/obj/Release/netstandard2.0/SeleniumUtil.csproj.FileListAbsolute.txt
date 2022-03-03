@@ -1,0 +1,5 @@
+D:\source\SeleniumUtil\SeleniumUtil\obj\Release\netstandard2.0\SeleniumUtil.csproj.AssemblyReference.cache
+D:\source\SeleniumUtil\SeleniumUtil\obj\Release\netstandard2.0\SeleniumUtil.GeneratedMSBuildEditorConfig.editorconfig
+D:\source\SeleniumUtil\SeleniumUtil\obj\Release\netstandard2.0\SeleniumUtil.AssemblyInfoInputs.cache
+D:\source\SeleniumUtil\SeleniumUtil\obj\Release\netstandard2.0\SeleniumUtil.AssemblyInfo.cs
+D:\source\SeleniumUtil\SeleniumUtil\obj\Release\netstandard2.0\SeleniumUtil.csproj.CoreCompileInputs.cache

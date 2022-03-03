@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "NhS9Wx3kWkqkeV5/4c0IejOWK2gJGm7UjzfnMsHizJv041sDsiia3HAmHKO++Yi78ftjRmHJnXuvxu3ZXON0Aw==",
-=======
-  "dgSpecHash": "h2ET/ApT30/HHTJtnsuqLUK7zNn5q0mPNetczeuvcDYSr3VgiML8lICGxOAyKHZq2w+nq95OhOaAxXmTx4J/8A==",
->>>>>>> 53be06e34e423700a3d6361359860edb4e68fc45
+  "dgSpecHash": "cy/ZMc7HMyrPc8bskArukoXYYr/BdRY6ypOOfrTQN71Y3D6BLWUTBC3tVTkCz1xO+4j+eK8yLgIjQYdOUVclug==",
   "success": true,
   "projectFilePath": "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
   "expectedPackageFiles": [
@@ -15,6 +11,10 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\selenium.support\\4.1.0\\selenium.support.4.1.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\selenium.webdriverbackedselenium\\4.1.0\\selenium.webdriverbackedselenium.4.1.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.3\\system.runtime.compilerservices.unsafe.4.5.3.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.security.accesscontrol\\6.0.0\\system.security.accesscontrol.6.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512"
   ],

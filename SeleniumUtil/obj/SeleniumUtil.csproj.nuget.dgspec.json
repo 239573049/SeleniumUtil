@@ -5,11 +5,7 @@
   },
   "projects": {
     "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj": {
-<<<<<<< HEAD
-      "version": "1.1.6",
-=======
-      "version": "1.1.0",
->>>>>>> 53be06e34e423700a3d6361359860edb4e68fc45
+      "version": "1.2.0",
       "restore": {
         "projectUniqueName": "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
         "projectName": "SeleniumUtil",
@@ -26,15 +22,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "netstandard2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
             "projectReferences": {}
           }
         },
@@ -45,8 +41,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
           "dependencies": {
             "Atata.Cli": {
               "target": "Package",
@@ -88,11 +84,11 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.NETCore.App": {
+            "NETStandard.Library": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
