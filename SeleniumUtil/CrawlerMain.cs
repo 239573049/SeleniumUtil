@@ -54,17 +54,13 @@ namespace SeleniumUtil
         public List<string> WindowHandles { get
             {
 
-                switch (_browserEnum)
+                return _browserEnum switch
                 {
-                    case BrowserEnum.Firefox:
-                        return _firefoxSelenium!.WindowHandles.ToList();
-                    case BrowserEnum.Chrome:
-                        return _chromeSelenium!.WindowHandles.ToList();
-                    case BrowserEnum.Edge:
-                        return _edgeSelenium!.WindowHandles.ToList();
-                    default:
-                        throw new NullReferenceException("不存在浏览器适配");
-                }
+                    BrowserEnum.Firefox => _firefoxSelenium!.WindowHandles.ToList(),
+                    BrowserEnum.Chrome => _chromeSelenium!.WindowHandles.ToList(),
+                    BrowserEnum.Edge => _edgeSelenium!.WindowHandles.ToList(),
+                    _ => throw new NullReferenceException("不存在浏览器适配"),
+                };
             } }
 
         /// <summary>
@@ -849,8 +845,8 @@ namespace SeleniumUtil
         /// <summary>
         /// 添加Cookie
         /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
+        /// <param name="cookies"></param>
+        /// <exception cref="NullReferenceException"></exception>
         public void AddCookie(Dictionary<string,string> cookies)
         {
             switch (_browserEnum)
