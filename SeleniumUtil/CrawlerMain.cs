@@ -72,15 +72,18 @@ namespace SeleniumUtil
         /// <param name="isEnableVerboseLogging">是否启动日志详细(firefox不生效)</param>
         /// <param name="isShowBrowser">是否显示浏览器</param>
         /// <param name="isGpu">是否启用gpu加速</param>
+        /// <param name="argument">设置浏览器启动参数</param>
         /// <param name="size">浏览器显示大小</param>
         /// <exception cref="NullReferenceException"></exception>
         public CrawlerMain(BrowserEnum browser,
-            Entitys.Size? size =null,
+            Size? size =null,
             bool hideCommandPromptWindow = false, 
             PageLoadStrategy pageLoadStrategy= PageLoadStrategy.Normal,
             bool isEnableVerboseLogging=false,
             bool isGpu=false,
-            bool isShowBrowser=true)
+            bool isShowBrowser=true,
+            string[]? argument =null
+            )
         {
             _browserEnum = browser;
             switch (_browserEnum)
@@ -113,6 +116,13 @@ namespace SeleniumUtil
                     {
                         _chromeOptions.AddArgument("--disable-gpu");
                     }
+                    if (argument != null)
+                    {
+                        foreach (var arg in argument)
+                        {
+                            _chromeOptions.AddArgument(arg);
+                        }
+                    }
                     _chromeSelenium = new ChromeDriver(_chromeDriver, _chromeOptions);
                     break;
                 case BrowserEnum.Edge:
@@ -143,6 +153,13 @@ namespace SeleniumUtil
                     {
                         _edgeOptions.AddArgument("--disable-gpu");
                     }
+                    if (argument != null)
+                    {
+                        foreach (var arg in argument)
+                        {
+                            _edgeOptions.AddArgument(arg);
+                        }
+                    }
                     _edgeSelenium = new EdgeDriver(_edgeDriver, _edgeOptions);
                     break;
                 case BrowserEnum.Firefox:
@@ -167,6 +184,13 @@ namespace SeleniumUtil
                     if (!isGpu)
                     {
                         _firefoxOptions.AddArgument("--disable-gpu");
+                    }
+                    if (argument != null)
+                    {
+                        foreach (var arg in argument)
+                        {
+                            _firefoxOptions.AddArgument(arg);
+                        }
                     }
                     _firefoxSelenium = new FirefoxDriver(_firefoxDriver, _firefoxOptions);
                     break;
@@ -975,5 +999,6 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
     }
 }

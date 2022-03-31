@@ -13,21 +13,12 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("xiaohu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyDescriptionAttribute("简易封装seslenium工具包简单方便，只需要一个方法实现三种浏览器的适配\r\n\t\t")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.3")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.6")]
 [assembly: System.Reflection.AssemblyProductAttribute("SeleniumUtil")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SeleniumUtil")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.3")]
-=======
-[assembly: System.Reflection.AssemblyDescriptionAttribute("\r\n\t\t\t简易封装seslenium工具包\r\n\t\t")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.2")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("SeleniumUtil")]
-[assembly: System.Reflection.AssemblyTitleAttribute("SeleniumUtil")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.2")]
->>>>>>> 53be06e34e423700a3d6361359860edb4e68fc45
 [assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/239573049/SeleniumUtil")]
 [assembly: System.Resources.NeutralResourcesLanguageAttribute("zh")]
 

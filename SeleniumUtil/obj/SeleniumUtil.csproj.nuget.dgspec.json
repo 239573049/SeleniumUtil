@@ -1,21 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj": {}
+    "E:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj": {}
   },
   "projects": {
-    "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj": {
-<<<<<<< HEAD
+    "E:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj": {
       "version": "1.1.6",
-=======
-      "version": "1.1.0",
->>>>>>> 53be06e34e423700a3d6361359860edb4e68fc45
       "restore": {
-        "projectUniqueName": "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
+        "projectUniqueName": "E:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
         "projectName": "SeleniumUtil",
-        "projectPath": "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
+        "projectPath": "E:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\source\\SeleniumUtil\\SeleniumUtil\\obj\\",
+        "outputPath": "E:\\source\\selenium-util\\SeleniumUtil\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -92,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,12 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "NhS9Wx3kWkqkeV5/4c0IejOWK2gJGm7UjzfnMsHizJv041sDsiia3HAmHKO++Yi78ftjRmHJnXuvxu3ZXON0Aw==",
-=======
-  "dgSpecHash": "h2ET/ApT30/HHTJtnsuqLUK7zNn5q0mPNetczeuvcDYSr3VgiML8lICGxOAyKHZq2w+nq95OhOaAxXmTx4J/8A==",
->>>>>>> 53be06e34e423700a3d6361359860edb4e68fc45
+  "dgSpecHash": "4P3+O46XdkSzbECnb0iFlooSaj36oYtn5X/Y6l9fiqdv9G9Oz75j2YBpWUjt59nSzw22OjBDe9Pgxpfz/yYodQ==",
   "success": true,
-  "projectFilePath": "D:\\source\\SeleniumUtil\\SeleniumUtil\\SeleniumUtil.csproj",
+  "projectFilePath": "E:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\atata.cli\\1.3.0\\atata.cli.1.3.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\atata.webdriversetup\\1.2.1\\atata.webdriversetup.1.2.1.nupkg.sha512",
