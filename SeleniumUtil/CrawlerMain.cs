@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace SeleniumUtil
 {
     /// <summary>
-    /// 简易封装seslenium工具包
+    /// 简易封装selenium工具包
     /// </summary>
     public class CrawlerMain
     {
@@ -999,6 +999,6 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
-
+        
     }
 }
