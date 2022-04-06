@@ -1,5 +1,7 @@
 # SeleniumUtil
 
+文档语言: [English](README.md) | [简体中文](README.zh-cn.md)
+
 ## Description
 
 Selenium简化工具包，包含三个主流浏览器的一些基本操作

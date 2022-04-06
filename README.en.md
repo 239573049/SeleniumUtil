@@ -1,5 +1,7 @@
 # SeleniumUtil
 
+Document Language: [English](README.md) | [简体中文](README.zh-cn.md)
+
 ## Description
 
 Selenium Simplified toolkit that contains some basic operations for all three major browsers
