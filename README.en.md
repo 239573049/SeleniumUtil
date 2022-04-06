@@ -2,7 +2,7 @@
 
 [![NuGet](https://img.shields.io/nuget/dt/SeleniumUtil.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/SeleniumUtil/)
 
-Document Language: [English](README.md) | [简体中文](README.zh-cn.md)
+document language : [English](README.en.md) | [简体中文](README.md)
 
 ## Description
 
