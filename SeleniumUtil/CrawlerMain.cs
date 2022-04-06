@@ -18,16 +18,16 @@ namespace SeleniumUtil
     /// </summary>
     public class CrawlerMain
     {
-        public EdgeDriverService? _edgeDriver { get; protected set; }
-        public EdgeOptions? _edgeOptions { get; protected set; }
-        public EdgeDriver? _edgeSelenium { get; protected set; }
-        public ChromeDriverService? _chromeDriver { get; protected set; }
-        public ChromeOptions? _chromeOptions { get; protected set; }
-        public ChromeDriver? _chromeSelenium { get; protected set; }
-        public FirefoxDriverService? _firefoxDriver { get; protected set; }
-        public FirefoxOptions? _firefoxOptions { get; protected set; }
-        public FirefoxDriver? _firefoxSelenium { get; protected set; }
-        public BrowserEnum? _browserEnum { get; protected set; }
+        public EdgeDriverService? EdgeDriver { get; protected set; }
+        public EdgeOptions? EdgeOptions { get; protected set; }
+        public EdgeDriver? EdgeSelenium { get; protected set; }
+        public ChromeDriverService? ChromeDriver { get; protected set; }
+        public ChromeOptions? ChromeOptions { get; protected set; }
+        public ChromeDriver? ChromeSelenium { get; protected set; }
+        public FirefoxDriverService? FirefoxDriver { get; protected set; }
+        public FirefoxOptions? FirefoxOptions { get; protected set; }
+        public FirefoxDriver? FirefoxSelenium { get; protected set; }
+        public BrowserEnum? BrowserEnum { get; protected set; }
         /// <summary>
         /// 获取当前窗口数量
         /// </summary>
@@ -35,11 +35,11 @@ namespace SeleniumUtil
         {
             get
             {
-                return _browserEnum switch
+                return BrowserEnum switch
                 {
-                    BrowserEnum.Firefox => _firefoxSelenium!.WindowHandles.Count,
-                    BrowserEnum.Chrome => _chromeSelenium!.WindowHandles.Count,
-                    BrowserEnum.Edge => _edgeSelenium!.WindowHandles.Count,
+                    Entitys.BrowserEnum.Firefox => FirefoxSelenium!.WindowHandles.Count,
+                    Entitys.BrowserEnum.Chrome => ChromeSelenium!.WindowHandles.Count,
+                    Entitys.BrowserEnum.Edge => EdgeSelenium!.WindowHandles.Count,
                     _ => throw new NullReferenceException("不存在浏览器适配"),
                 };
             }
@@ -54,11 +54,11 @@ namespace SeleniumUtil
         public List<string> WindowHandles { get
             {
 
-                return _browserEnum switch
+                return BrowserEnum switch
                 {
-                    BrowserEnum.Firefox => _firefoxSelenium!.WindowHandles.ToList(),
-                    BrowserEnum.Chrome => _chromeSelenium!.WindowHandles.ToList(),
-                    BrowserEnum.Edge => _edgeSelenium!.WindowHandles.ToList(),
+                    Entitys.BrowserEnum.Firefox => FirefoxSelenium!.WindowHandles.ToList<string>(),
+                    Entitys.BrowserEnum.Chrome => ChromeSelenium!.WindowHandles.ToList<string>(),
+                    Entitys.BrowserEnum.Edge => EdgeSelenium!.WindowHandles.ToList<string>(),
                     _ => throw new NullReferenceException("不存在浏览器适配"),
                 };
             } }
@@ -85,114 +85,114 @@ namespace SeleniumUtil
             string[]? argument =null
             )
         {
-            _browserEnum = browser;
-            switch (_browserEnum)
+            BrowserEnum = browser;
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
+                case Entitys.BrowserEnum.Chrome:
                     DriverSetup.ConfigureChrome()
                         .WithAutoVersion()
                         .SetUp();
-                    _chromeDriver = ChromeDriverService.CreateDefaultService();
-                    _chromeDriver.HideCommandPromptWindow = hideCommandPromptWindow;
+                    ChromeDriver = ChromeDriverService.CreateDefaultService();
+                    ChromeDriver.HideCommandPromptWindow = hideCommandPromptWindow;
                     if (isEnableVerboseLogging)
                     {
-                        _chromeDriver.LogPath = AppDomain.CurrentDomain.BaseDirectory + "chromedriver.log";
-                        _chromeDriver.EnableVerboseLogging= true;
+                        ChromeDriver.LogPath = AppDomain.CurrentDomain.BaseDirectory + "chromedriver.log";
+                        ChromeDriver.EnableVerboseLogging= true;
                     }
-                    _chromeOptions = new ChromeOptions
+                    ChromeOptions = new ChromeOptions
                     {
                         PageLoadStrategy = pageLoadStrategy
                     };
                     if (!isShowBrowser)
                     {
-                        _chromeOptions.AddArgument("--headless");//隐藏浏览器
+                        ChromeOptions.AddArgument("--headless");//隐藏浏览器
                     }
                     else
                     {
                         if (size == null) size = new Entitys.Size(500, 1200);
-                        _chromeOptions.AddArgument($"--window-size={size.Width},{size.Height}");
+                        ChromeOptions.AddArgument($"--window-size={size.Width},{size.Height}");
                     }
                     if (!isGpu)
                     {
-                        _chromeOptions.AddArgument("--disable-gpu");
+                        ChromeOptions.AddArgument("--disable-gpu");
                     }
                     if (argument != null)
                     {
                         foreach (var arg in argument)
                         {
-                            _chromeOptions.AddArgument(arg);
+                            ChromeOptions.AddArgument(arg);
                         }
                     }
-                    _chromeSelenium = new ChromeDriver(_chromeDriver, _chromeOptions);
+                    ChromeSelenium = new ChromeDriver(ChromeDriver, ChromeOptions);
                     break;
-                case BrowserEnum.Edge:
+                case Entitys.BrowserEnum.Edge:
                     DriverSetup.ConfigureEdge()
                         .WithAutoVersion()
                         .SetUp();
-                    _edgeDriver = EdgeDriverService.CreateDefaultService();
-                    _edgeDriver.HideCommandPromptWindow = hideCommandPromptWindow;
+                    EdgeDriver = EdgeDriverService.CreateDefaultService();
+                    EdgeDriver.HideCommandPromptWindow = hideCommandPromptWindow;
                     if (isEnableVerboseLogging)
                     {
-                        _edgeDriver.LogPath = AppDomain.CurrentDomain.BaseDirectory + "edgedriver.log";
-                        _edgeDriver.EnableVerboseLogging = true;
+                        EdgeDriver.LogPath = AppDomain.CurrentDomain.BaseDirectory + "edgedriver.log";
+                        EdgeDriver.EnableVerboseLogging = true;
                     }
-                    _edgeOptions = new EdgeOptions
+                    EdgeOptions = new EdgeOptions
                     {
                         PageLoadStrategy = pageLoadStrategy
                     };
                     if (!isShowBrowser)
                     {
-                        _edgeOptions.AddArgument("--headless");//隐藏浏览器
+                        EdgeOptions.AddArgument("--headless");//隐藏浏览器
                     }
                     else
                     {
                         if (size == null) size = new Entitys.Size(500, 1200);
-                        _edgeOptions.AddArgument($"--window-size={size.Width},{size.Height}");
+                        EdgeOptions.AddArgument($"--window-size={size.Width},{size.Height}");
                     }
                     if (!isGpu)
                     {
-                        _edgeOptions.AddArgument("--disable-gpu");
+                        EdgeOptions.AddArgument("--disable-gpu");
                     }
                     if (argument != null)
                     {
                         foreach (var arg in argument)
                         {
-                            _edgeOptions.AddArgument(arg);
+                            EdgeOptions.AddArgument(arg);
                         }
                     }
-                    _edgeSelenium = new EdgeDriver(_edgeDriver, _edgeOptions);
+                    EdgeSelenium = new EdgeDriver(EdgeDriver, EdgeOptions);
                     break;
-                case BrowserEnum.Firefox:
+                case Entitys.BrowserEnum.Firefox:
                     DriverSetup.ConfigureFirefox()
                         .WithAutoVersion()
                         .SetUp();
-                    _firefoxDriver = FirefoxDriverService.CreateDefaultService();
-                    _firefoxDriver.HideCommandPromptWindow = hideCommandPromptWindow;
-                    _firefoxOptions = new FirefoxOptions
+                    FirefoxDriver = FirefoxDriverService.CreateDefaultService();
+                    FirefoxDriver.HideCommandPromptWindow = hideCommandPromptWindow;
+                    FirefoxOptions = new FirefoxOptions
                     {
                         PageLoadStrategy = pageLoadStrategy
                     };
                     if (!isShowBrowser)
                     {
-                        _firefoxOptions.AddArgument("--headless");//隐藏浏览器
+                        FirefoxOptions.AddArgument("--headless");//隐藏浏览器
                     }
                     else
                     {
                         if (size == null) size = new Entitys.Size(500, 1200);
-                        _firefoxOptions.AddArgument($"--window-size={size.Width},{size.Height}");
+                        FirefoxOptions.AddArgument($"--window-size={size.Width},{size.Height}");
                     }
                     if (!isGpu)
                     {
-                        _firefoxOptions.AddArgument("--disable-gpu");
+                        FirefoxOptions.AddArgument("--disable-gpu");
                     }
                     if (argument != null)
                     {
                         foreach (var arg in argument)
                         {
-                            _firefoxOptions.AddArgument(arg);
+                            FirefoxOptions.AddArgument(arg);
                         }
                     }
-                    _firefoxSelenium = new FirefoxDriver(_firefoxDriver, _firefoxOptions);
+                    FirefoxSelenium = new FirefoxDriver(FirefoxDriver, FirefoxOptions);
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -202,7 +202,7 @@ namespace SeleniumUtil
         /// 默认创建Edge
         /// </summary>
         /// <exception cref="NullReferenceException"></exception>
-        public static CrawlerMain NewCrawlerMain(BrowserEnum browser=BrowserEnum.Edge
+        public static CrawlerMain NewCrawlerMain(BrowserEnum browser= Entitys.BrowserEnum.Edge
             )
         {
             return new CrawlerMain(browser);
@@ -213,16 +213,16 @@ namespace SeleniumUtil
         /// <param name="url"></param>
         public void GoToUrl(string url)
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.Navigate().GoToUrl(url);
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.Navigate().GoToUrl(url);
                     break;
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.Navigate().GoToUrl(url);
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.Navigate().GoToUrl(url);
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.Navigate().GoToUrl(url);
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.Navigate().GoToUrl(url);
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -234,16 +234,16 @@ namespace SeleniumUtil
         /// <param name="url"></param>
         public void GoToUrl(Uri url)
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.Navigate().GoToUrl(url);
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.Navigate().GoToUrl(url);
                     break;
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.Navigate().GoToUrl(url);
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.Navigate().GoToUrl(url);
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.Navigate().GoToUrl(url);
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.Navigate().GoToUrl(url);
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -254,16 +254,16 @@ namespace SeleniumUtil
         /// </summary>
         public void Back()
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.Navigate().Back();
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.Navigate().Back();
                     break;
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.Navigate().Back();
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.Navigate().Back();
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.Navigate().Back();
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.Navigate().Back();
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -274,16 +274,16 @@ namespace SeleniumUtil
         /// </summary>
         public void Forward()
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.Navigate().Forward();
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.Navigate().Forward();
                     break;
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.Navigate().Forward();
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.Navigate().Forward();
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.Navigate().Forward();
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.Navigate().Forward();
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -294,16 +294,16 @@ namespace SeleniumUtil
         /// </summary>
         public void Refresh()
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.Navigate().Refresh();
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.Navigate().Refresh();
                     break;
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.Navigate().Refresh();
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.Navigate().Refresh();
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.Navigate().Refresh();
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.Navigate().Refresh();
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -317,11 +317,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public ReadOnlyCollection<IWebElement> FindElementsByClassNames(string className)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElements(By.ClassName(className)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElements(By.ClassName(className)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElements(By.ClassName(className)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElements(By.ClassName(className)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElements(By.ClassName(className)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElements(By.ClassName(className)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -333,11 +333,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public ReadOnlyCollection<IWebElement> FindElementsByCssSelectors(string cssSelector)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElements(By.CssSelector(cssSelector)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElements(By.CssSelector(cssSelector)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElements(By.CssSelector(cssSelector)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElements(By.CssSelector(cssSelector)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElements(By.CssSelector(cssSelector)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElements(By.CssSelector(cssSelector)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -349,11 +349,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public ReadOnlyCollection<IWebElement> FindElementsByIds(string id)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElements(By.Id(id)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElements(By.Id(id)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElements(By.Id(id)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElements(By.Id(id)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElements(By.Id(id)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElements(By.Id(id)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -365,11 +365,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public ReadOnlyCollection<IWebElement> FindElementsByLinkTexts(string linkText)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElements(By.LinkText(linkText)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElements(By.LinkText(linkText)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElements(By.LinkText(linkText)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElements(By.LinkText(linkText)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElements(By.LinkText(linkText)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElements(By.LinkText(linkText)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -381,11 +381,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public ReadOnlyCollection<IWebElement> FindElementsByPartialLinkTexts(string partialLinkText)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElements(By.PartialLinkText(partialLinkText)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElements(By.PartialLinkText(partialLinkText)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElements(By.PartialLinkText(partialLinkText)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElements(By.PartialLinkText(partialLinkText)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElements(By.PartialLinkText(partialLinkText)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElements(By.PartialLinkText(partialLinkText)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -397,11 +397,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public ReadOnlyCollection<IWebElement> FindElementsByTagNames(string tagName)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElements(By.TagName(tagName)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElements(By.TagName(tagName)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElements(By.TagName(tagName)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElements(By.TagName(tagName)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElements(By.TagName(tagName)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElements(By.TagName(tagName)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -414,11 +414,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public ReadOnlyCollection<IWebElement> FindElementsByXPaths(string xpath)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElements(By.XPath(xpath)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElements(By.XPath(xpath)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElements(By.XPath(xpath)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElements(By.XPath(xpath)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElements(By.XPath(xpath)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElements(By.XPath(xpath)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -430,11 +430,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IWebElement FindElementsByClassName(string className)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElement(By.ClassName(className)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElement(By.ClassName(className)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElement(By.ClassName(className)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElement(By.ClassName(className)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElement(By.ClassName(className)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElement(By.ClassName(className)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -446,11 +446,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IWebElement FindElementsByCssSelector(string cssSelector)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElement(By.CssSelector(cssSelector)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElement(By.CssSelector(cssSelector)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElement(By.CssSelector(cssSelector)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElement(By.CssSelector(cssSelector)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElement(By.CssSelector(cssSelector)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElement(By.CssSelector(cssSelector)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -462,11 +462,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IWebElement FindElementsById(string id)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElement(By.Id(id)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElement(By.Id(id)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElement(By.Id(id)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElement(By.Id(id)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElement(By.Id(id)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElement(By.Id(id)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -478,11 +478,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IWebElement FindElementsByLinkText(string linkText)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElement(By.LinkText(linkText)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElement(By.LinkText(linkText)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElement(By.LinkText(linkText)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElement(By.LinkText(linkText)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElement(By.LinkText(linkText)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElement(By.LinkText(linkText)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -494,11 +494,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IWebElement FindElementsByPartialLinkText(string partialLinkText)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElement(By.PartialLinkText(partialLinkText)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElement(By.PartialLinkText(partialLinkText)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElement(By.PartialLinkText(partialLinkText)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElement(By.PartialLinkText(partialLinkText)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElement(By.PartialLinkText(partialLinkText)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElement(By.PartialLinkText(partialLinkText)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -510,11 +510,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IWebElement FindElementsByTagName(string tagName)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElement(By.TagName(tagName)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElement(By.TagName(tagName)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElement(By.TagName(tagName)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElement(By.TagName(tagName)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElement(By.TagName(tagName)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElement(By.TagName(tagName)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -527,11 +527,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IWebElement FindElementsByXPath(string xpath)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.FindElement(By.XPath(xpath)),
-                BrowserEnum.Chrome => _chromeSelenium!.FindElement(By.XPath(xpath)),
-                BrowserEnum.Edge => _edgeSelenium!.FindElement(By.XPath(xpath)),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.FindElement(By.XPath(xpath)),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.FindElement(By.XPath(xpath)),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.FindElement(By.XPath(xpath)),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -542,11 +542,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IOptions Manage()
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.Manage(),
-                BrowserEnum.Chrome => _chromeSelenium!.Manage(),
-                BrowserEnum.Edge => _edgeSelenium!.Manage(),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.Manage(),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.Manage(),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.Manage(),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -555,16 +555,16 @@ namespace SeleniumUtil
         /// </summary>
         public void CloseBrowser()
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.Close();
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.Close();
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.Close();
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.Close();
                     break;
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.Close();
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.Close();
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -577,11 +577,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public ITargetLocator SwitchTo()
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.SwitchTo(),
-                BrowserEnum.Chrome => _chromeSelenium!.SwitchTo(),
-                BrowserEnum.Edge => _edgeSelenium!.SwitchTo(),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.SwitchTo(),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.SwitchTo(),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.SwitchTo(),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -593,11 +593,11 @@ namespace SeleniumUtil
         /// <returns>脚本返回的值。</returns>
         public object ExecuteScript(string script, params object[] args)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.ExecuteScript(script, args),
-                BrowserEnum.Chrome => _chromeSelenium!.ExecuteScript(script, args),
-                BrowserEnum.Edge => _edgeSelenium!.ExecuteScript(script, args),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.ExecuteScript(script, args),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.ExecuteScript(script, args),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.ExecuteScript(script, args),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -609,11 +609,11 @@ namespace SeleniumUtil
         /// <returns>脚本返回的值。</returns>
         public object ExecuteAsyncScript(string script, params object[] args)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.ExecuteAsyncScript(script, args),
-                BrowserEnum.Chrome => _chromeSelenium!.ExecuteAsyncScript(script, args),
-                BrowserEnum.Edge => _edgeSelenium!.ExecuteAsyncScript(script, args),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.ExecuteAsyncScript(script, args),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.ExecuteAsyncScript(script, args),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.ExecuteAsyncScript(script, args),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -623,16 +623,16 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public void ResetInputState()
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.ResetInputState();
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.ResetInputState();
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.ResetInputState();
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.ResetInputState();
                     break;
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.ResetInputState();
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.ResetInputState();
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -645,16 +645,16 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public void PerformActions(IList<ActionSequence> actionSequenceList)
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.PerformActions(actionSequenceList);
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.PerformActions(actionSequenceList);
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.PerformActions(actionSequenceList);
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.PerformActions(actionSequenceList);
                     break;
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.PerformActions(actionSequenceList);
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.PerformActions(actionSequenceList);
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -667,11 +667,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public Screenshot GetScreenshot()
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Firefox => _firefoxSelenium!.GetScreenshot(),
-                BrowserEnum.Chrome => _chromeSelenium!.GetScreenshot(),
-                BrowserEnum.Edge => _edgeSelenium!.GetScreenshot(),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.GetScreenshot(),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.GetScreenshot(),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.GetScreenshot(),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -682,19 +682,19 @@ namespace SeleniumUtil
         public void Dispose()
         {
 
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.Dispose();
-                    _chromeDriver!.Dispose();
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.Dispose();
+                    ChromeDriver!.Dispose();
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.Dispose();
-                    _edgeDriver!.Dispose();
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.Dispose();
+                    EdgeDriver!.Dispose();
                     break;
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.Dispose();
-                    _firefoxDriver!.Dispose();
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.Dispose();
+                    FirefoxDriver!.Dispose();
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -715,16 +715,16 @@ namespace SeleniumUtil
         {
             if (isJavaScriptMonitor) return;
             IJavaScriptEngine? monitor =null;
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
-                    monitor = new JavaScriptEngine(_chromeSelenium);
+                case Entitys.BrowserEnum.Chrome:
+                    monitor = new JavaScriptEngine(ChromeSelenium);
                     break;
-                case BrowserEnum.Edge:
-                    monitor = new JavaScriptEngine(_edgeSelenium);
+                case Entitys.BrowserEnum.Edge:
+                    monitor = new JavaScriptEngine(EdgeSelenium);
                     break;
-                case BrowserEnum.Firefox:
-                    monitor = new JavaScriptEngine(_firefoxSelenium);
+                case Entitys.BrowserEnum.Firefox:
+                    monitor = new JavaScriptEngine(FirefoxSelenium);
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -741,16 +741,16 @@ namespace SeleniumUtil
         {
             if (isJavaScriptMonitor!) return;
             IJavaScriptEngine? monitor;
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
-                    monitor = new JavaScriptEngine(_chromeSelenium);
+                case Entitys.BrowserEnum.Chrome:
+                    monitor = new JavaScriptEngine(ChromeSelenium);
                     break;
-                case BrowserEnum.Edge:
-                    monitor = new JavaScriptEngine(_edgeSelenium);
+                case Entitys.BrowserEnum.Edge:
+                    monitor = new JavaScriptEngine(EdgeSelenium);
                     break;
-                case BrowserEnum.Firefox:
-                    monitor = new JavaScriptEngine(_firefoxSelenium);
+                case Entitys.BrowserEnum.Firefox:
+                    monitor = new JavaScriptEngine(FirefoxSelenium);
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -765,11 +765,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IWebDriver Frame(string data)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Chrome => _chromeSelenium!.SwitchTo().Frame(data),
-                BrowserEnum.Edge => _edgeSelenium!.SwitchTo().Frame(data),
-                BrowserEnum.Firefox => _firefoxSelenium!.SwitchTo().Frame(data),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.SwitchTo().Frame(data),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.SwitchTo().Frame(data),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.SwitchTo().Frame(data),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -781,11 +781,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IWebDriver Frame(IWebElement data)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Chrome => _chromeSelenium!.SwitchTo().Frame(data),
-                BrowserEnum.Edge => _edgeSelenium!.SwitchTo().Frame(data),
-                BrowserEnum.Firefox => _firefoxSelenium!.SwitchTo().Frame(data),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.SwitchTo().Frame(data),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.SwitchTo().Frame(data),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.SwitchTo().Frame(data),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -797,11 +797,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception> 
         public IWebDriver Frame(int data)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Chrome => _chromeSelenium!.SwitchTo().Frame(data),
-                BrowserEnum.Edge => _edgeSelenium!.SwitchTo().Frame(data),
-                BrowserEnum.Firefox => _firefoxSelenium!.SwitchTo().Frame(data),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.SwitchTo().Frame(data),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.SwitchTo().Frame(data),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.SwitchTo().Frame(data),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -812,11 +812,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IWebDriver DefaultContent()
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Chrome => _chromeSelenium!.SwitchTo().DefaultContent(),
-                BrowserEnum.Edge => _edgeSelenium!.SwitchTo().DefaultContent(),
-                BrowserEnum.Firefox => _firefoxSelenium!.SwitchTo().DefaultContent(),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.SwitchTo().DefaultContent(),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.SwitchTo().DefaultContent(),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.SwitchTo().DefaultContent(),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -827,16 +827,16 @@ namespace SeleniumUtil
         /// <param name="value"></param>
         public void AddCookie(string key, string value)
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.Manage().Cookies.AddCookie(new Cookie(key, value));
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.Manage().Cookies.AddCookie(new Cookie(key, value));
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.Manage().Cookies.AddCookie(new Cookie(key, value));
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.Manage().Cookies.AddCookie(new Cookie(key, value));
                     break;
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.Manage().Cookies.AddCookie(new Cookie(key, value));
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.Manage().Cookies.AddCookie(new Cookie(key, value));
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -849,24 +849,24 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public void AddCookie(Dictionary<string,string> cookies)
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
+                case Entitys.BrowserEnum.Chrome:
                     foreach (var d in cookies)
                     {
-                        _chromeSelenium!.Manage().Cookies.AddCookie(new Cookie(d.Key, d.Value));
+                        ChromeSelenium!.Manage().Cookies.AddCookie(new Cookie(d.Key, d.Value));
                     }
                     break;
-                case BrowserEnum.Edge:
+                case Entitys.BrowserEnum.Edge:
                     foreach (var d in cookies)
                     {
-                        _edgeSelenium!.Manage().Cookies.AddCookie(new Cookie(d.Key, d.Value));
+                        EdgeSelenium!.Manage().Cookies.AddCookie(new Cookie(d.Key, d.Value));
                     }
                     break;
-                case BrowserEnum.Firefox:
+                case Entitys.BrowserEnum.Firefox:
                     foreach (var d in cookies)
                     {
-                        _firefoxSelenium!.Manage().Cookies.AddCookie(new Cookie(d.Key, d.Value));
+                        FirefoxSelenium!.Manage().Cookies.AddCookie(new Cookie(d.Key, d.Value));
                     }
                     break;
                 default:
@@ -881,11 +881,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public Cookie GetCookie(string name)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Chrome => _chromeSelenium!.Manage().Cookies.GetCookieNamed(name),
-                BrowserEnum.Edge => _edgeSelenium!.Manage().Cookies.GetCookieNamed(name),
-                BrowserEnum.Firefox => _firefoxSelenium!.Manage().Cookies.GetCookieNamed(name),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.Manage().Cookies.GetCookieNamed(name),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.Manage().Cookies.GetCookieNamed(name),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.Manage().Cookies.GetCookieNamed(name),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -896,16 +896,16 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public void DeleteCookie(string key)
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.Manage().Cookies.DeleteCookieNamed(key);
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.Manage().Cookies.DeleteCookieNamed(key);
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.Manage().Cookies.DeleteCookieNamed(key);
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.Manage().Cookies.DeleteCookieNamed(key);
                     break;
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.Manage().Cookies.DeleteCookieNamed(key);
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.Manage().Cookies.DeleteCookieNamed(key);
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -918,16 +918,16 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public void DeleteCookie(Cookie cookie)
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.Manage().Cookies.DeleteCookie(cookie);
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.Manage().Cookies.DeleteCookie(cookie);
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.Manage().Cookies.DeleteCookie(cookie);
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.Manage().Cookies.DeleteCookie(cookie);
                     break;
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.Manage().Cookies.DeleteCookie(cookie);
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.Manage().Cookies.DeleteCookie(cookie);
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -940,11 +940,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public ReadOnlyCollection<Cookie> GetCookiesAll()
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Chrome => _chromeSelenium!.Manage().Cookies.AllCookies,
-                BrowserEnum.Edge => _edgeSelenium!.Manage().Cookies.AllCookies,
-                BrowserEnum.Firefox => _firefoxSelenium!.Manage().Cookies.AllCookies,
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.Manage().Cookies.AllCookies,
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.Manage().Cookies.AllCookies,
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.Manage().Cookies.AllCookies,
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -954,16 +954,16 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public void DeleteCookieAll()
         {
-            switch (_browserEnum)
+            switch (BrowserEnum)
             {
-                case BrowserEnum.Chrome:
-                    _chromeSelenium!.Manage().Cookies.DeleteAllCookies();
+                case Entitys.BrowserEnum.Chrome:
+                    ChromeSelenium!.Manage().Cookies.DeleteAllCookies();
                     break;
-                case BrowserEnum.Edge:
-                    _edgeSelenium!.Manage().Cookies.DeleteAllCookies();
+                case Entitys.BrowserEnum.Edge:
+                    EdgeSelenium!.Manage().Cookies.DeleteAllCookies();
                     break;
-                case BrowserEnum.Firefox:
-                    _firefoxSelenium!.Manage().Cookies.DeleteAllCookies();
+                case Entitys.BrowserEnum.Firefox:
+                    FirefoxSelenium!.Manage().Cookies.DeleteAllCookies();
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
@@ -977,11 +977,11 @@ namespace SeleniumUtil
         /// <exception cref="NullReferenceException"></exception>
         public IWebDriver SwitchoverWindow(string windowName)
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Chrome => _chromeSelenium!.SwitchTo().Window(windowName),
-                BrowserEnum.Edge => _edgeSelenium!.SwitchTo().Window(windowName),
-                BrowserEnum.Firefox => _firefoxSelenium!.SwitchTo().Window(windowName),
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.SwitchTo().Window(windowName),
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.SwitchTo().Window(windowName),
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.SwitchTo().Window(windowName),
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
@@ -991,11 +991,11 @@ namespace SeleniumUtil
         /// <returns></returns>
         public string GetTitle()
         {
-            return _browserEnum switch
+            return BrowserEnum switch
             {
-                BrowserEnum.Chrome => _chromeSelenium!.Title,
-                BrowserEnum.Edge => _edgeSelenium!.Title,
-                BrowserEnum.Firefox => _firefoxSelenium!.Title,
+                Entitys.BrowserEnum.Chrome => ChromeSelenium!.Title,
+                Entitys.BrowserEnum.Edge => EdgeSelenium!.Title,
+                Entitys.BrowserEnum.Firefox => FirefoxSelenium!.Title,
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
