@@ -56,9 +56,9 @@ namespace SeleniumUtil
 
                 return BrowserEnum switch
                 {
-                    Entitys.BrowserEnum.Firefox => FirefoxSelenium!.WindowHandles.ToList<string>(),
-                    Entitys.BrowserEnum.Chrome => ChromeSelenium!.WindowHandles.ToList<string>(),
-                    Entitys.BrowserEnum.Edge => EdgeSelenium!.WindowHandles.ToList<string>(),
+                    Entitys.BrowserEnum.Firefox => FirefoxSelenium!.WindowHandles.ToList(),
+                    Entitys.BrowserEnum.Chrome => ChromeSelenium!.WindowHandles.ToList(),
+                    Entitys.BrowserEnum.Edge => EdgeSelenium!.WindowHandles.ToList(),
                     _ => throw new NullReferenceException("不存在浏览器适配"),
                 };
             } }
@@ -109,7 +109,7 @@ namespace SeleniumUtil
                     }
                     else
                     {
-                        if (size == null) size = new Entitys.Size(500, 1200);
+                        if (size == null) size = new Size(500, 1200);
                         ChromeOptions.AddArgument($"--window-size={size.Width},{size.Height}");
                     }
                     if (!isGpu)
