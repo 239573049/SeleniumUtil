@@ -56,9 +56,9 @@ namespace SeleniumUtil
 
                 return BrowserEnum switch
                 {
-                    Entitys.BrowserEnum.Firefox => FirefoxSelenium!.WindowHandles.ToList<string>(),
-                    Entitys.BrowserEnum.Chrome => ChromeSelenium!.WindowHandles.ToList<string>(),
-                    Entitys.BrowserEnum.Edge => EdgeSelenium!.WindowHandles.ToList<string>(),
+                    Entitys.BrowserEnum.Firefox => FirefoxSelenium!.WindowHandles.ToList(),
+                    Entitys.BrowserEnum.Chrome => ChromeSelenium!.WindowHandles.ToList(),
+                    Entitys.BrowserEnum.Edge => EdgeSelenium!.WindowHandles.ToList(),
                     _ => throw new NullReferenceException("不存在浏览器适配"),
                 };
             } }
@@ -151,7 +151,7 @@ namespace SeleniumUtil
                     }
                     if (!isGpu)
                     {
-                        EdgeOptions.AddArgument("--disable-gpu");
+                        EdgeOptions.AddArgument("--disable-gpu");//是否启动gpu加速
                     }
                     if (argument != null)
                     {
