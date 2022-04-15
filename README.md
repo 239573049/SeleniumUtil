@@ -9,7 +9,7 @@
 
 Selenium简化工具包，包含三个主流浏览器的一些基本操作
 
-[工具示例网站](https://thinghelp.cn/docs/docs/selenium-uitl/selenium)
+[工具示例网站](https://tokengo.top/docs/selenium-uitl/selenium/)
 
 ## 安装插件
 

@@ -9,7 +9,7 @@ document language : [English](README.en.md) | [简体中文](README.md)
 
 Selenium Simplified toolkit that contains some basic operations for all three major browsers
 
-[Sample tool site](https://thinghelp.cn/docs/docs/selenium-uitl/selenium)
+[Sample tool site](https://tokengo.top/docs/selenium-uitl/selenium/)
 
 ## Installing a plug-in
 
