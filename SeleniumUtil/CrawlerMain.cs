@@ -16,7 +16,7 @@ namespace SeleniumUtil
     /// <summary>
     /// 简易封装selenium工具包
     /// </summary>
-    public class CrawlerMain
+    public abstract class CrawlerMain
     {
         public EdgeDriverService? EdgeDriver { get; protected set; }
         public EdgeOptions? EdgeOptions { get; protected set; }
