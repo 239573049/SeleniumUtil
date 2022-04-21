@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading.Tasks;  
 
 namespace SeleniumUtil
 {
@@ -51,7 +51,7 @@ namespace SeleniumUtil
         /// <summary>
         /// 获取所有窗口句柄
         /// </summary>
-        public List<string> WindowHandles { get
+        public List<string> WindowHandles { get 
             {
 
                 return BrowserEnum switch
