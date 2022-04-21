@@ -16,7 +16,7 @@ namespace SeleniumUtil
     /// <summary>
     /// 简易封装selenium工具包
     /// </summary>
-    public abstract class CrawlerMain
+    public  class CrawlerMain
     {
         public EdgeDriverService? EdgeDriver { get; protected set; }
         public EdgeOptions? EdgeOptions { get; protected set; }
@@ -38,9 +38,9 @@ namespace SeleniumUtil
                 return BrowserEnum switch
                 {
                     Entitys.BrowserEnum.Firefox => FirefoxSelenium!.WindowHandles.Count,
-                    Entitys.BrowserEnum.Chrome => ChromeSelenium!.WindowHandles.Count,
-                    Entitys.BrowserEnum.Edge => EdgeSelenium!.WindowHandles.Count,
-                    _ => throw new NullReferenceException("不存在浏览器适配"),
+                    Entitys.BrowserEnum.Chrome  => ChromeSelenium!.WindowHandles.Count,
+                    Entitys.BrowserEnum.Edge    => EdgeSelenium!.WindowHandles.Count,
+                    _                           => throw new NullReferenceException("不存在浏览器适配"),
                 };
             }
         }
@@ -85,6 +85,7 @@ namespace SeleniumUtil
             string[]? argument =null
             )
         {
+            
             BrowserEnum = browser;
             switch (BrowserEnum)
             {
