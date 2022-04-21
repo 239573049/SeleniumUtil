@@ -914,7 +914,7 @@ namespace SeleniumUtil
         /// <summary>
         /// 删除Cookie
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="cookie"></param>
         /// <exception cref="NullReferenceException"></exception>
         public void DeleteCookie(Cookie cookie)
         {

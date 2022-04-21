@@ -1,5 +1,8 @@
 ﻿namespace SeleniumUtil.Entitys
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Size
     {
         /// <summary>

@@ -16,7 +16,7 @@ Selenium Simplified toolkit that contains some basic operations for all three ma
 In the tool=》NuGet package manager  =》Package manager console
 
 ```csharp
-Install-Package SeleniumUtil -Version 1.2.1
+Install-Package SeleniumUtil -Version 1.2.2
 ```
 
 ## Use SeleniumUtil to access Baidu  
