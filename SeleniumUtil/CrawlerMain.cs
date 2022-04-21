@@ -85,7 +85,6 @@ namespace SeleniumUtil
             string[]? argument =null
             )
         {
-            
             BrowserEnum = browser;
             switch (BrowserEnum)
             {
