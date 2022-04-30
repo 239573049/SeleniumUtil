@@ -6,7 +6,7 @@
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Authors>xiaohu</Authors>
-		<Version>1.2.1</Version>
+		<Version>1.2.2</Version>
 		<Description>简易封装seslenium工具包简单方便，只需要一个方法实现三种浏览器的适配
 		</Description>
 		<NeutralLanguage>zh</NeutralLanguage>

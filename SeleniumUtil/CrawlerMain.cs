@@ -9,14 +9,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading.Tasks;  
 
 namespace SeleniumUtil
 {
     /// <summary>
     /// 简易封装selenium工具包
     /// </summary>
-    public class CrawlerMain
+    public  class CrawlerMain
     {
         public EdgeDriverService? EdgeDriver { get; protected set; }
         public EdgeOptions? EdgeOptions { get; protected set; }
@@ -38,9 +38,9 @@ namespace SeleniumUtil
                 return BrowserEnum switch
                 {
                     Entitys.BrowserEnum.Firefox => FirefoxSelenium!.WindowHandles.Count,
-                    Entitys.BrowserEnum.Chrome => ChromeSelenium!.WindowHandles.Count,
-                    Entitys.BrowserEnum.Edge => EdgeSelenium!.WindowHandles.Count,
-                    _ => throw new NullReferenceException("不存在浏览器适配"),
+                    Entitys.BrowserEnum.Chrome  => ChromeSelenium!.WindowHandles.Count,
+                    Entitys.BrowserEnum.Edge    => EdgeSelenium!.WindowHandles.Count,
+                    _                           => throw new NullReferenceException("不存在浏览器适配"),
                 };
             }
         }
@@ -51,7 +51,7 @@ namespace SeleniumUtil
         /// <summary>
         /// 获取所有窗口句柄
         /// </summary>
-        public List<string> WindowHandles { get
+        public List<string> WindowHandles { get 
             {
 
                 return BrowserEnum switch
@@ -151,7 +151,7 @@ namespace SeleniumUtil
                     }
                     if (!isGpu)
                     {
-                        EdgeOptions.AddArgument("--disable-gpu");
+                        EdgeOptions.AddArgument("--disable-gpu");//是否启动gpu加速
                     }
                     if (argument != null)
                     {
@@ -914,7 +914,7 @@ namespace SeleniumUtil
         /// <summary>
         /// 删除Cookie
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="cookie"></param>
         /// <exception cref="NullReferenceException"></exception>
         public void DeleteCookie(Cookie cookie)
         {

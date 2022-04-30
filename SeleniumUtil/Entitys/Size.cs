@@ -1,21 +1,24 @@
 ﻿namespace SeleniumUtil.Entitys
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Size
     {
         /// <summary>
         /// 宽度
         /// </summary>
-        public double Width { get; set; }
+        public int Width { get; set; }
         /// <summary>
         /// 高度
         /// </summary>
-        public double Height { get; set; }
+        public int Height { get; set; }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public Size(double width,double height)
+        public Size(int width, int height)
         {
             Width=width;
             Height=height;
