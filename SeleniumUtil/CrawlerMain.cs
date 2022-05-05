@@ -189,7 +189,7 @@ namespace SeleniumUtil
                     }
                     else
                     {
-                        if (size == null) size = new Size(500, 1200);
+                        if (size == null) size = new Size(800, 1200);
                         ChromeOptions.AddArgument($"--window-size={size.Width},{size.Height}");
                     }
                     if (!isGpu)
