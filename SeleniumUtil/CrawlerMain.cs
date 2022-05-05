@@ -89,7 +89,7 @@ namespace SeleniumUtil
         public Tuple<BrowserEnum, object> GetOptions()
         {
             BrowserEnum browser = default;
-            object options = null;
+            object? options = null;
             switch (BrowserEnum)
             {
                 case Entitys.BrowserEnum.Chrome:
