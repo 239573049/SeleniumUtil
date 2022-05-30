@@ -131,19 +131,19 @@
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
-      "System.Security.AccessControl/6.0.0": {
+      "System.Security.AccessControl/5.0.0": {
         "type": "package",
         "dependencies": {
           "System.Security.Principal.Windows": "5.0.0"
         },
         "compile": {
-          "lib/netstandard2.0/System.Security.AccessControl.dll": {}
+          "ref/netstandard2.0/System.Security.AccessControl.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Security.AccessControl.dll": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/netstandard2.0/System.Security.AccessControl.dll": {
+          "runtimes/win/lib/netstandard1.3/System.Security.AccessControl.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -453,33 +453,51 @@
         "version.txt"
       ]
     },
-    "System.Security.AccessControl/6.0.0": {
-      "sha512": "AUADIc0LIEQe7MzC+I0cl0rAT8RrTAKFHl53yHjEUzNVIaUlhFY11vc2ebiVJzVBuOzun6F7FBA+8KAbGTTedQ==",
+    "System.Security.AccessControl/5.0.0": {
+      "sha512": "dagJ1mHZO3Ani8GH0PHpPEe/oYO+rVdbQjvjJkBRNQkX4t0r1iaeGn8+/ybkSLEan3/slM0t59SVdHzuHf2jmw==",
       "type": "package",
-      "path": "system.security.accesscontrol/6.0.0",
+      "path": "system.security.accesscontrol/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Security.AccessControl.targets",
-        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net46/System.Security.AccessControl.dll",
         "lib/net461/System.Security.AccessControl.dll",
         "lib/net461/System.Security.AccessControl.xml",
-        "lib/net6.0/System.Security.AccessControl.dll",
-        "lib/net6.0/System.Security.AccessControl.xml",
+        "lib/netstandard1.3/System.Security.AccessControl.dll",
         "lib/netstandard2.0/System.Security.AccessControl.dll",
         "lib/netstandard2.0/System.Security.AccessControl.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net46/System.Security.AccessControl.dll",
+        "ref/net461/System.Security.AccessControl.dll",
+        "ref/net461/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/System.Security.AccessControl.dll",
+        "ref/netstandard1.3/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/de/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/es/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/fr/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/it/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/ja/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/ko/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/ru/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/zh-hans/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/zh-hant/System.Security.AccessControl.xml",
+        "ref/netstandard2.0/System.Security.AccessControl.dll",
+        "ref/netstandard2.0/System.Security.AccessControl.xml",
+        "ref/uap10.0.16299/_._",
+        "runtimes/win/lib/net46/System.Security.AccessControl.dll",
         "runtimes/win/lib/net461/System.Security.AccessControl.dll",
         "runtimes/win/lib/net461/System.Security.AccessControl.xml",
-        "runtimes/win/lib/net6.0/System.Security.AccessControl.dll",
-        "runtimes/win/lib/net6.0/System.Security.AccessControl.xml",
-        "runtimes/win/lib/netstandard2.0/System.Security.AccessControl.dll",
-        "runtimes/win/lib/netstandard2.0/System.Security.AccessControl.xml",
-        "system.security.accesscontrol.6.0.0.nupkg.sha512",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.xml",
+        "runtimes/win/lib/netstandard1.3/System.Security.AccessControl.dll",
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.security.accesscontrol.5.0.0.nupkg.sha512",
         "system.security.accesscontrol.nuspec",
-        "useSharedDesignerContext.txt"
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Security.Principal.Windows/5.0.0": {
@@ -544,9 +562,7 @@
       "Atata.WebDriverSetup >= 1.2.1",
       "Selenium.Support >= 4.1.0",
       "Selenium.WebDriver >= 4.1.0",
-      "Selenium.WebDriverBackedSelenium >= 4.1.0",
-      "System.Security.AccessControl >= 6.0.0",
-      "System.Security.Principal.Windows >= 5.0.0"
+      "Selenium.WebDriverBackedSelenium >= 4.1.0"
     ]
   },
   "packageFolders": {
@@ -556,11 +572,11 @@
   "project": {
     "version": "1.2.5",
     "restore": {
-      "projectUniqueName": "E:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
+      "projectUniqueName": "D:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
       "projectName": "SeleniumUtil",
-      "projectPath": "E:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
+      "projectPath": "D:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "E:\\source\\selenium-util\\SeleniumUtil\\obj\\",
+      "outputPath": "D:\\source\\selenium-util\\SeleniumUtil\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -613,14 +629,6 @@
           "Selenium.WebDriverBackedSelenium": {
             "target": "Package",
             "version": "[4.1.0, )"
-          },
-          "System.Security.AccessControl": {
-            "target": "Package",
-            "version": "[6.0.0, )"
-          },
-          "System.Security.Principal.Windows": {
-            "target": "Package",
-            "version": "[5.0.0, )"
           }
         },
         "imports": [
@@ -638,7 +646,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300-preview.22204.3\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

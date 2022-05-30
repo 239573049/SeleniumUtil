@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj": {}
+    "D:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj": {}
   },
   "projects": {
-    "E:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj": {
+    "D:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj": {
       "version": "1.2.5",
       "restore": {
-        "projectUniqueName": "E:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
+        "projectUniqueName": "D:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
         "projectName": "SeleniumUtil",
-        "projectPath": "E:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
+        "projectPath": "D:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\source\\selenium-util\\SeleniumUtil\\obj\\",
+        "outputPath": "D:\\source\\selenium-util\\SeleniumUtil\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -64,14 +64,6 @@
             "Selenium.WebDriverBackedSelenium": {
               "target": "Package",
               "version": "[4.1.0, )"
-            },
-            "System.Security.AccessControl": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
-            "System.Security.Principal.Windows": {
-              "target": "Package",
-              "version": "[5.0.0, )"
             }
           },
           "imports": [
@@ -89,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300-preview.22204.3\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

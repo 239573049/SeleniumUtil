@@ -5,30 +5,32 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Authors>xiaohu</Authors>
+		<Authors>token</Authors>
 		<Version>1.2.5</Version>
-		<Description>简易封装seslenium工具包简单方便，只需要一个方法实现三种浏览器的适配
+		<Description>简易封装seslenium工具包简单方便，只需要一个方法
+三种浏览器的适配
 		</Description>
 		<NeutralLanguage>zh</NeutralLanguage>
 		<AssemblyVersion>1.0.0.3</AssemblyVersion>
 		<FileVersion>1.0.0.3</FileVersion>
-		<PackageProjectUrl>https://thinghelp.cn/docs/docs/selenium-uitl/selenium</PackageProjectUrl>
-		<PackageIcon>logo.jpg</PackageIcon>
+		<PackageProjectUrl>https://tokenhu.top/docs/docs/selenium-uitl/selenium</PackageProjectUrl>
+		<PackageIcon>logo.png</PackageIcon>
 		<RepositoryUrl>https://github.com/239573049/SeleniumUtil</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageVersion>1.2.6</PackageVersion>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Content Include="logo.jpg" />
-	</ItemGroup>
 
 	<ItemGroup>
 	  <None Include="..\README.md">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Update="logo.png">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
 	  </None>
 	</ItemGroup>
 
@@ -38,8 +40,6 @@
 		<PackageReference Include="Selenium.Support" Version="4.1.0" />
 		<PackageReference Include="Selenium.WebDriver" Version="4.1.0" />
 		<PackageReference Include="Selenium.WebDriverBackedSelenium" Version="4.1.0" />
-		<PackageReference Include="System.Security.AccessControl" Version="6.0.0" />
-		<PackageReference Include="System.Security.Principal.Windows" Version="5.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
