@@ -791,7 +791,7 @@ namespace SeleniumUtil
         /// <param name="javaScriptExceptionListening"></param>
         /// <returns></returns>
         /// <exception cref="NullReferenceException"></exception>
-        public async Task JavaScriptConsoleApiCalled(EventHandler<JavaScriptConsoleApiCalledEventArgs> javaScriptExceptionListening)
+        public async Task JavaScriptConsoleApiCalledAsync(EventHandler<JavaScriptConsoleApiCalledEventArgs> javaScriptExceptionListening)
         {
             if (isJavaScriptMonitor) return;
             IJavaScriptEngine? monitor =null;

@@ -19,7 +19,7 @@ Selenium简化工具包，包含三个主流浏览器的一些基本操作
 Install-Package SeleniumUtil
 ```
 
-## 使用SeleniumUtil访问baidu
+## 使用SeleniumUtil访问百度
 
 ```csharp
 using SeleniumUtil;
