@@ -1,4 +1,6 @@
 # SeleniumUtil
+[![NuGet](https://img.shields.io/nuget/dt/SeleniumUtil.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/SeleniumUtil/) 
+[![NuGet](https://img.shields.io/nuget/v/SeleniumUtil.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/SeleniumUtil/) 
 
 #### Description
 Selenium简化工具包，包含三个主流浏览器的一些基本操作
