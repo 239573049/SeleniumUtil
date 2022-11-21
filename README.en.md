@@ -30,7 +30,7 @@ var wd = data.FindElementsById("kw"); //Get the input box
 wd.SendKeys("Selenium"); //The input
 var su = data.FindElementsById("su");//Get the search button
 su.Click();//click
-Thread.Sleep(500); //Wait for the interface to complete loading
+data.Wait(By.Id("content_left"), TimeSpan.FromSeconds(10)); //Wait for the interface to complete loading
 var content_left = data.FindElementsById("content_left"); // Access to content
 Console.WriteLine(content_left.Text);
 Console.ReadKey();

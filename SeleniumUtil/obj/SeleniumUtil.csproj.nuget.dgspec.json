@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj": {}
+    "D:\\demo\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj": {}
   },
   "projects": {
-    "D:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj": {
-      "version": "1.2.6",
+    "D:\\demo\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj": {
+      "version": "1.3.0",
       "restore": {
-        "projectUniqueName": "D:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
+        "projectUniqueName": "D:\\demo\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
         "projectName": "SeleniumUtil",
-        "projectPath": "D:\\source\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
+        "projectPath": "D:\\demo\\selenium-util\\SeleniumUtil\\SeleniumUtil.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\source\\selenium-util\\SeleniumUtil\\obj\\",
+        "outputPath": "D:\\demo\\selenium-util\\SeleniumUtil\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -72,7 +72,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -81,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

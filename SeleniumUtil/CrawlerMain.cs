@@ -9,14 +9,15 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;  
+using System.Threading.Tasks;
+using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumUtil
 {
     /// <summary>
     /// 简易封装selenium工具包
     /// </summary>
-    public  class CrawlerMain
+    public class CrawlerMain
     {
         public EdgeDriverService? EdgeDriverService { get; protected set; }
         public EdgeOptions? EdgeOptions { get; protected set; }
@@ -33,10 +34,10 @@ namespace SeleniumUtil
         /// 获取driver
         /// </summary>
         /// <returns>itme1枚举浏览器类型|itme2 driver</returns>
-        public Tuple<BrowserEnum,object> GetDriver()
+        public Tuple<BrowserEnum, object> GetDriver()
         {
-            BrowserEnum browser=default;
-            object? driver=null;
+            BrowserEnum browser = default;
+            object? driver = null;
             switch (BrowserEnum)
             {
                 case Entitys.BrowserEnum.Chrome:
@@ -52,6 +53,7 @@ namespace SeleniumUtil
                     driver = FirefoxDriver;
                     break;
             }
+
             return new Tuple<BrowserEnum, object>(browser, driver!);
         }
 
@@ -79,6 +81,7 @@ namespace SeleniumUtil
                     driverService = FirefoxDriverService;
                     break;
             }
+
             return new Tuple<BrowserEnum, object>(browser, driverService!);
         }
 
@@ -105,6 +108,7 @@ namespace SeleniumUtil
                     options = FirefoxOptions!;
                     break;
             }
+
             return new Tuple<BrowserEnum, object>(browser, options!);
         }
 
@@ -118,22 +122,25 @@ namespace SeleniumUtil
                 return BrowserEnum switch
                 {
                     Entitys.BrowserEnum.Firefox => FirefoxDriver!.WindowHandles.Count,
-                    Entitys.BrowserEnum.Chrome  => ChromeDriver!.WindowHandles.Count,
-                    Entitys.BrowserEnum.Edge    => EdgeDriver!.WindowHandles.Count,
-                    _                           => throw new NullReferenceException("不存在浏览器适配"),
+                    Entitys.BrowserEnum.Chrome => ChromeDriver!.WindowHandles.Count,
+                    Entitys.BrowserEnum.Edge => EdgeDriver!.WindowHandles.Count,
+                    _ => throw new NullReferenceException("不存在浏览器适配"),
                 };
             }
         }
+
         /// <summary>
         /// 是否启动了JavaScript监听
         /// </summary>
         private bool isJavaScriptMonitor = false;
+
         /// <summary>
         /// 获取所有窗口句柄
         /// </summary>
-        public List<string> WindowHandles { get 
+        public List<string> WindowHandles
+        {
+            get
             {
-
                 return BrowserEnum switch
                 {
                     Entitys.BrowserEnum.Firefox => FirefoxDriver!.WindowHandles.ToList(),
@@ -141,7 +148,8 @@ namespace SeleniumUtil
                     Entitys.BrowserEnum.Edge => EdgeDriver!.WindowHandles.ToList(),
                     _ => throw new NullReferenceException("不存在浏览器适配"),
                 };
-            } }
+            }
+        }
 
         /// <summary>
         /// 初始化
@@ -156,14 +164,14 @@ namespace SeleniumUtil
         /// <param name="size">浏览器显示大小</param>
         /// <exception cref="NullReferenceException"></exception>
         public CrawlerMain(BrowserEnum browser,
-            Size? size =null,
-            bool hideCommandPromptWindow = false, 
-            PageLoadStrategy pageLoadStrategy= PageLoadStrategy.Normal,
-            bool isEnableVerboseLogging=false,
-            bool isGpu=false,
-            bool isShowBrowser=true,
-            string[]? argument =null
-            )
+            Size? size = null,
+            bool hideCommandPromptWindow = false,
+            PageLoadStrategy pageLoadStrategy = PageLoadStrategy.Normal,
+            bool isEnableVerboseLogging = false,
+            bool isGpu = false,
+            bool isShowBrowser = true,
+            string[]? argument = null
+        )
         {
             BrowserEnum = browser;
             switch (BrowserEnum)
@@ -177,25 +185,28 @@ namespace SeleniumUtil
                     if (isEnableVerboseLogging)
                     {
                         ChromeDriverService.LogPath = AppDomain.CurrentDomain.BaseDirectory + "chromedriver.log";
-                        ChromeDriverService.EnableVerboseLogging= true;
+                        ChromeDriverService.EnableVerboseLogging = true;
                     }
+
                     ChromeOptions = new ChromeOptions
                     {
                         PageLoadStrategy = pageLoadStrategy
                     };
                     if (!isShowBrowser)
                     {
-                        ChromeOptions.AddArgument("--headless");//隐藏浏览器
+                        ChromeOptions.AddArgument("--headless"); //隐藏浏览器
                     }
                     else
                     {
                         if (size == null) size = new Size(800, 1200);
                         ChromeOptions.AddArgument($"--window-size={size.Width},{size.Height}");
                     }
+
                     if (!isGpu)
                     {
                         ChromeOptions.AddArgument("--disable-gpu");
                     }
+
                     if (argument != null)
                     {
                         foreach (var arg in argument)
@@ -203,6 +214,7 @@ namespace SeleniumUtil
                             ChromeOptions.AddArgument(arg);
                         }
                     }
+
                     ChromeDriver = new ChromeDriver(ChromeDriverService, ChromeOptions);
                     break;
                 case Entitys.BrowserEnum.Edge:
@@ -216,23 +228,26 @@ namespace SeleniumUtil
                         EdgeDriverService.LogPath = AppDomain.CurrentDomain.BaseDirectory + "edgedriver.log";
                         EdgeDriverService.EnableVerboseLogging = true;
                     }
+
                     EdgeOptions = new EdgeOptions
                     {
                         PageLoadStrategy = pageLoadStrategy
                     };
                     if (!isShowBrowser)
                     {
-                        EdgeOptions.AddArgument("--headless");//隐藏浏览器
+                        EdgeOptions.AddArgument("--headless"); //隐藏浏览器
                     }
                     else
                     {
                         if (size == null) size = new Size(500, 1200);
                         EdgeOptions.AddArgument($"--window-size={size.Width},{size.Height}");
                     }
+
                     if (!isGpu)
                     {
-                        EdgeOptions.AddArgument("--disable-gpu");//是否启动gpu加速
+                        EdgeOptions.AddArgument("--disable-gpu"); //是否启动gpu加速
                     }
+
                     if (argument != null)
                     {
                         foreach (var arg in argument)
@@ -240,6 +255,7 @@ namespace SeleniumUtil
                             EdgeOptions.AddArgument(arg);
                         }
                     }
+
                     EdgeDriver = new EdgeDriver(EdgeDriverService, EdgeOptions);
                     break;
                 case Entitys.BrowserEnum.Firefox:
@@ -254,17 +270,19 @@ namespace SeleniumUtil
                     };
                     if (!isShowBrowser)
                     {
-                        FirefoxOptions.AddArgument("--headless");//隐藏浏览器
+                        FirefoxOptions.AddArgument("--headless"); //隐藏浏览器
                     }
                     else
                     {
                         if (size == null) size = new Entitys.Size(500, 1200);
                         FirefoxOptions.AddArgument($"--window-size={size.Width},{size.Height}");
                     }
+
                     if (!isGpu)
                     {
                         FirefoxOptions.AddArgument("--disable-gpu");
                     }
+
                     if (argument != null)
                     {
                         foreach (var arg in argument)
@@ -272,21 +290,24 @@ namespace SeleniumUtil
                             FirefoxOptions.AddArgument(arg);
                         }
                     }
+
                     FirefoxDriver = new FirefoxDriver(FirefoxDriverService, FirefoxOptions);
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 默认创建Edge
         /// </summary>
         /// <exception cref="NullReferenceException"></exception>
-        public static CrawlerMain NewCrawlerMain(BrowserEnum browser= Entitys.BrowserEnum.Edge
-            )
+        public static CrawlerMain NewCrawlerMain(BrowserEnum browser = Entitys.BrowserEnum.Edge
+        )
         {
             return new CrawlerMain(browser);
         }
+
         /// <summary>
         /// 访问地址
         /// </summary>
@@ -308,6 +329,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 访问地址
         /// </summary>
@@ -329,6 +351,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 在浏览器的历史记录中向后移动一个条目。  
         /// </summary>
@@ -349,6 +372,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 在浏览器的历史记录中向前移动一个“项目”。  
         /// </summary>
@@ -369,6 +393,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 刷新当前页面  
         /// </summary>
@@ -389,6 +414,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 查找与提供的类名匹配的元素列表  
         /// </summary>
@@ -405,6 +431,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 查找与指定CSS选择器匹配的所有元素。  
         /// </summary>
@@ -421,6 +448,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 查找页面中与提供的ID匹配的第一个元素  
         /// </summary>
@@ -437,6 +465,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 查找与所提供的链接文本匹配的元素列表      
         /// </summary>
@@ -453,6 +482,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 查找与提供的类名匹配的元素列表  
         /// </summary>
@@ -469,6 +499,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 查找与所提供的DOM标记匹配的元素列表  
         /// </summary>
@@ -502,6 +533,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 查找与提供的类名匹配的元素列表  
         /// </summary>
@@ -518,6 +550,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 查找与指定CSS选择器匹配的所有元素。  
         /// </summary>
@@ -534,6 +567,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 查找页面中与提供的ID匹配的第一个元素  
         /// </summary>
@@ -550,6 +584,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 查找与所提供的链接文本匹配的元素列表      
         /// </summary>
@@ -566,6 +601,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 查找与提供的类名匹配的元素列表  
         /// </summary>
@@ -582,6 +618,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 查找与所提供的DOM标记匹配的元素列表  
         /// </summary>
@@ -615,6 +652,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 获取一个对象来设置速度
         /// </summary>
@@ -630,6 +668,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 关闭浏览器
         /// </summary>
@@ -650,6 +689,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 方法使您能够访问开关框架和窗口  
         /// </summary>
@@ -665,6 +705,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 在当前选择的框架或窗口的上下文中执行JavaScript  
         /// </summary>
@@ -681,6 +722,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 在当前选择的框架或窗口的上下文中异步执行JavaScript。  
         /// </summary>
@@ -697,6 +739,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 重置操作执行程序的输入状态。  
         /// </summary>
@@ -718,6 +761,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 使用此操作执行程序执行指定的操作列表。  
         /// </summary>
@@ -740,6 +784,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 获取一个 OpenQA.Selenium.Screenshot对象，该对象表示屏幕上页面的图像。  
         /// </summary>
@@ -755,13 +800,13 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 关闭浏览器关闭驱动
         /// </summary>
         /// <exception cref="NullReferenceException"></exception>
         public void Dispose()
         {
-
             switch (BrowserEnum)
             {
                 case Entitys.BrowserEnum.Chrome:
@@ -780,6 +825,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 监听JavaScript异常启动
         /// 使用示例
@@ -791,10 +837,11 @@ namespace SeleniumUtil
         /// <param name="javaScriptExceptionListening"></param>
         /// <returns></returns>
         /// <exception cref="NullReferenceException"></exception>
-        public async Task JavaScriptConsoleApiCalledAsync(EventHandler<JavaScriptConsoleApiCalledEventArgs> javaScriptExceptionListening)
+        public async Task JavaScriptConsoleApiCalledAsync(
+            EventHandler<JavaScriptConsoleApiCalledEventArgs> javaScriptExceptionListening)
         {
             if (isJavaScriptMonitor) return;
-            IJavaScriptEngine? monitor =null;
+            IJavaScriptEngine? monitor = null;
             switch (BrowserEnum)
             {
                 case Entitys.BrowserEnum.Chrome:
@@ -809,10 +856,12 @@ namespace SeleniumUtil
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
             }
+
             monitor!.JavaScriptConsoleApiCalled += javaScriptExceptionListening;
             await monitor.StartEventMonitoring();
             isJavaScriptMonitor = true;
         }
+
         /// <summary>
         /// 关闭JavaScript监听
         /// </summary>
@@ -835,8 +884,10 @@ namespace SeleniumUtil
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
             }
-             monitor.StopEventMonitoring();
+
+            monitor.StopEventMonitoring();
         }
+
         /// <summary>
         /// 切换到Frame
         /// </summary>
@@ -853,6 +904,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 切换到Frame
         /// </summary>
@@ -869,6 +921,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 切换到Frame
         /// </summary>
@@ -885,6 +938,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 回到顶层退出Frame
         /// </summary>
@@ -900,6 +954,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 添加Cookie
         /// </summary>
@@ -922,12 +977,13 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 添加Cookie
         /// </summary>
         /// <param name="cookies"></param>
         /// <exception cref="NullReferenceException"></exception>
-        public void AddCookie(Dictionary<string,string> cookies)
+        public void AddCookie(Dictionary<string, string> cookies)
         {
             switch (BrowserEnum)
             {
@@ -936,23 +992,27 @@ namespace SeleniumUtil
                     {
                         ChromeDriver!.Manage().Cookies.AddCookie(new Cookie(d.Key, d.Value));
                     }
+
                     break;
                 case Entitys.BrowserEnum.Edge:
                     foreach (var d in cookies)
                     {
                         EdgeDriver!.Manage().Cookies.AddCookie(new Cookie(d.Key, d.Value));
                     }
+
                     break;
                 case Entitys.BrowserEnum.Firefox:
                     foreach (var d in cookies)
                     {
                         FirefoxDriver!.Manage().Cookies.AddCookie(new Cookie(d.Key, d.Value));
                     }
+
                     break;
                 default:
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 获取Cookie
         /// </summary>
@@ -969,6 +1029,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 删除Cookie
         /// </summary>
@@ -991,6 +1052,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 删除Cookie
         /// </summary>
@@ -1013,6 +1075,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 获取所有Cookie
         /// </summary>
@@ -1028,6 +1091,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 删除所有Cookie
         /// </summary>
@@ -1049,6 +1113,7 @@ namespace SeleniumUtil
                     throw new NullReferenceException("不存在浏览器适配");
             }
         }
+
         /// <summary>
         /// 切换Window界面
         /// </summary>
@@ -1065,6 +1130,7 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
+
         /// <summary>
         /// 获取标题
         /// </summary>
@@ -1079,6 +1145,25 @@ namespace SeleniumUtil
                 _ => throw new NullReferenceException("不存在浏览器适配"),
             };
         }
-        
+
+        /// <summary>
+        /// 等待某一个元素加载完成
+        /// </summary>
+        /// <param name="by"></param>
+        /// <param name="timeSpan"></param>
+        /// <returns></returns>
+        /// <exception cref="NullReferenceException"></exception>
+        public IWebElement Wait(By by, TimeSpan timeSpan)
+        {
+            var wait = BrowserEnum switch
+            {
+                Entitys.BrowserEnum.Chrome => new WebDriverWait(ChromeDriver, timeSpan),
+                Entitys.BrowserEnum.Edge => new WebDriverWait(EdgeDriver, timeSpan),
+                Entitys.BrowserEnum.Firefox => new WebDriverWait(FirefoxDriver, timeSpan),
+                _ => throw new NullReferenceException("不存在浏览器适配")
+            };
+
+            return wait.Until(p => p.FindElement(by));
+        }
     }
 }
