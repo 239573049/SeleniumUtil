@@ -9,10 +9,12 @@
         /// 宽度
         /// </summary>
         public int Width { get; set; }
+
         /// <summary>
         /// 高度
         /// </summary>
         public int Height { get; set; }
+        
         /// <summary>
         /// 
         /// </summary>

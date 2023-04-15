@@ -9,10 +9,12 @@
         /// 谷歌浏览器
         /// </summary>
         Chrome,
+
         /// <summary>
         /// Edge浏览器
         /// </summary>
         Edge,
+        
         /// <summary>
         /// 火狐浏览器
         /// </summary>
